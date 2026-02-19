@@ -1,7 +1,8 @@
+import { createPortal } from "react-dom";
 function Modal({ isOpen, onClose, children}) {
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-fit h-fit mx-4 relative">
         <button
@@ -13,7 +14,7 @@ function Modal({ isOpen, onClose, children}) {
         </button>
         {children}
       </div>
-    </div>
+    </div>,document.getElementById("modal-root")
   );
 }
 
